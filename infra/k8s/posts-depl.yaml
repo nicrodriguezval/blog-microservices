@@ -26,12 +26,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: post-clusterip-srv
+  name: posts-clusterip-srv
 spec:
   selector:
-    app: post
+    app: posts
   ports:
-    - name: post
+    - name: posts
       protocol: TCP
       port: 4000
       targetPort: 4000

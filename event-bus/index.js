@@ -9,7 +9,7 @@ app.use(json())
 app.post('/events', (req, res) => {
   const { body: event } = req
   const hosts = [
-    'http://post-clusterip-srv:4000/events',
+    'http://posts-clusterip-srv:4000/events',
   ]
 
   events.push(event)

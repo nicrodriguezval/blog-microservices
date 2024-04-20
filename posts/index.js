@@ -25,18 +25,22 @@ app.post('/posts', async (req, res) => {
 
   posts.push(post)
 
-  await fetch('http://event-bus-srv:4500/events', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      type: EVENTS.POST_CREATED,
-      data: post
-    })
-  }).catch(({ message }) => res.status(400).send({ error: message }))
+  try {
+    await fetch('http://event-bus-srv:4005/events', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        type: EVENTS.POST_CREATED,
+        data: post
+      })
+    }).catch((e) => console.log(e))
 
-  res.status(201).send(post)
+    res.status(201).send(post)
+  } catch (e) {
+    res.status(500).send({ error: e.message })
+  }
 })
 
 app.post('/events', (req, res) => {
