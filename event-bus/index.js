@@ -6,7 +6,7 @@ const app = express()
 
 app.use(json())
 
-app.post('/events', async (req, res) => {
+app.post('/events', (req, res) => {
   const { body: event } = req
   const ports = [4000, 4001, 4002, 4003]
 
