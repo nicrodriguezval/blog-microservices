@@ -22,3 +22,16 @@ spec:
             requests:
               cpu: "0.1"
               memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: post-clusterip-srv
+spec:
+  selector:
+    app: post
+  ports:
+    - name: post
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
