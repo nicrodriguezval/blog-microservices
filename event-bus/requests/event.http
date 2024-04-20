@@ -1,0 +1,6 @@
+POST http://localhost:4005/events
+content-type: application/json
+
+{
+	"eventType": "CommentCreated"
+}
