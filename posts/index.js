@@ -25,7 +25,7 @@ app.post('/posts', async (req, res) => {
 
   posts.push(post)
 
-  await fetch('http://localhost:4005/events', {
+  await fetch('http://event-bus-srv:4500/events', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

@@ -8,13 +8,15 @@ app.use(json())
 
 app.post('/events', (req, res) => {
   const { body: event } = req
-  const ports = [4000, 4001, 4002, 4003]
+  const hosts = [
+    'http://post-clusterip-srv:4000/events',
+  ]
 
   events.push(event)
 
   try {
-    for (const port of ports) {
-      fetch(`http://localhost:${port}/events`, {
+    for (const host of hosts) {
+      fetch(host, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(event)
